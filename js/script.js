@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectsFilter();
   initGitHubHeatmap();
   initContactForm();
+  initEmailCopy();
   initModals();
   initAOS();
   initTiltEffect();
@@ -297,11 +298,26 @@ function initScrollProgress() {
   const progressBar = document.getElementById('scroll-progress');
   if (!progressBar) return;
 
-  window.addEventListener('scroll', () => {
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (window.scrollY / totalHeight) * 100;
-    progressBar.style.width = `${progress}%`;
-  });
+  let ticking = false;
+
+  const updateProgress = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  updateProgress();
 }
 
 function initCursorGlow() {
@@ -501,6 +517,75 @@ function initContactForm() {
       if (charCounter) charCounter.textContent = '0 / 500';
     });
   }
+}
+
+function initEmailCopy() {
+  const contactEmail = document.getElementById('contact-email');
+  const copyBtn = document.getElementById('btn-copy-email');
+  const emailTextEl = document.getElementById('email-address-text');
+  const copyIcon = document.getElementById('copy-email-icon');
+
+  if (!contactEmail) return;
+
+  const getEmail = () => emailTextEl ? emailTextEl.textContent.trim() : 'sonukumar.dev@gmail.com';
+
+  const performCopy = (e) => {
+    const textToCopy = getEmail();
+
+    const handleCopySuccess = () => {
+      showToast('Copied! Email address copied to clipboard.', 'success');
+
+      if (copyIcon) {
+        copyIcon.className = 'fa-solid fa-check';
+      }
+      if (copyBtn) {
+        copyBtn.classList.add('copied');
+        copyBtn.setAttribute('title', 'Copied!');
+      }
+
+      setTimeout(() => {
+        if (copyIcon) {
+          copyIcon.className = 'fa-regular fa-copy';
+        }
+        if (copyBtn) {
+          copyBtn.classList.remove('copied');
+          copyBtn.setAttribute('title', 'Copy email address');
+        }
+      }, 2000);
+    };
+
+    const fallbackCopy = (text) => {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        handleCopySuccess();
+      } catch (err) {
+        showToast('Failed to copy email address.', 'error');
+      }
+      document.body.removeChild(textarea);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => handleCopySuccess())
+        .catch(() => fallbackCopy(textToCopy));
+    } else {
+      fallbackCopy(textToCopy);
+    }
+  };
+
+  contactEmail.addEventListener('click', performCopy);
+  contactEmail.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      performCopy(e);
+    }
+  });
 }
 
 function showToast(msg, type = 'info') {

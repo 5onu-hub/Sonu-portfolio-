@@ -910,12 +910,15 @@
 
       <div class="contact-grid">
         <div class="contact-info-list" data-aos="fade-right">
-          <div class="contact-item" id="contact-email">
+          <div class="contact-item contact-item-copyable" id="contact-email" title="Click to copy email address" tabindex="0" role="button" aria-label="Copy email address">
             <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
             <div class="contact-text">
               <h4>Email</h4>
-              <p>sonukumar.dev@gmail.com</p>
+              <p><span id="email-address-text">sonukumar.dev@gmail.com</span></p>
             </div>
+            <button class="copy-btn" id="btn-copy-email" aria-label="Copy email address" title="Copy email address">
+              <i class="fa-regular fa-copy" id="copy-email-icon"></i>
+            </button>
           </div>
 
           <div class="contact-item" id="contact-phone">

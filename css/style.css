@@ -277,7 +277,11 @@ ul {
   background: var(--gradient-primary);
   z-index: 10001;
   width: 0%;
-  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.8), 0 0 6px rgba(124, 58, 237, 0.6);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  transition: width 0.08s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
 }
 
 /* Particles Canvas Background */
@@ -1432,6 +1436,48 @@ ul {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
+}
+
+.contact-item-copyable {
+  cursor: pointer;
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.contact-item-copyable:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-item-copyable .copy-btn {
+  margin-left: auto;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.contact-item-copyable:hover .copy-btn,
+.contact-item-copyable .copy-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.contact-item-copyable .copy-btn.copied {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
 }
 
 .contact-icon {
