@@ -203,7 +203,14 @@
 
           <div class="profile-card" id="hero-profile-card">
             <div class="profile-img-inner">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Sonu Kumar Profile" id="img-profile" />
+              <img src="assets/profile.svg" alt="Sonu Kumar Profile" id="img-profile" />
+              <div class="profile-photo-overlay" id="profile-photo-overlay">
+                <label for="profile-image-upload" class="photo-upload-label" title="Upload Custom Profile Photo">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>Change Photo</span>
+                </label>
+                <input type="file" id="profile-image-upload" accept="image/*" style="display:none;" />
+              </div>
             </div>
             <div class="status-badge" id="hero-status">
               <span class="status-dot"></span>
@@ -364,9 +371,14 @@
   </section>
 
   <!-- ==========================================================================
-     4. SKILLS SECTION
+     4. SKILLS SECTION (GLASSMORPHISM TECH CARDS)
      ========================================================================== -->
   <section class="section" id="skills">
+    <div class="skills-bg-particles" aria-hidden="true">
+      <span class="particle particle-1"></span>
+      <span class="particle particle-2"></span>
+      <span class="particle particle-3"></span>
+    </div>
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <div class="section-badge" id="badge-skills">My Skills</div>
@@ -374,173 +386,379 @@
         <p class="section-subtitle" id="subtitle-skills">Languages, frameworks, databases, and development tools I work with.</p>
       </div>
 
-      <div class="skills-filter" id="skills-filter">
-        <button class="filter-btn active" data-filter="all" id="filter-skill-all">All Skills</button>
-        <button class="filter-btn" data-filter="programming" id="filter-skill-prog">Programming</button>
-        <button class="filter-btn" data-filter="frontend" id="filter-skill-front">Frontend</button>
-        <button class="filter-btn" data-filter="backend" id="filter-skill-back">Backend</button>
-        <button class="filter-btn" data-filter="database" id="filter-skill-db">Database</button>
-        <button class="filter-btn" data-filter="tools" id="filter-skill-tools">Tools</button>
+      <div class="skills-filter" id="skills-filter" data-aos="fade-up" data-aos-delay="100">
+        <button class="filter-btn active" data-filter="all" id="filter-skill-all"><i class="fa-solid fa-layer-group"></i> All Skills</button>
+        <button class="filter-btn" data-filter="frontend" id="filter-skill-front"><i class="fa-solid fa-code"></i> Frontend</button>
+        <button class="filter-btn" data-filter="backend" id="filter-skill-back"><i class="fa-solid fa-server"></i> Backend</button>
+        <button class="filter-btn" data-filter="database" id="filter-skill-db"><i class="fa-solid fa-database"></i> Database</button>
+        <button class="filter-btn" data-filter="programming" id="filter-skill-prog"><i class="fa-solid fa-terminal"></i> Programming Languages</button>
+        <button class="filter-btn" data-filter="tools" id="filter-skill-tools"><i class="fa-solid fa-screwdriver-wrench"></i> Tools & Technologies</button>
       </div>
 
       <div class="skills-grid" id="skills-grid">
-        <!-- Programming -->
-        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-html">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
-              <div class="skill-name">HTML5</div>
-            </div>
-            <div class="skill-percent">95%</div>
-          </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="95%"></div></div>
-        </div>
-
-        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-css">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
-              <div class="skill-name">CSS3 / Flexbox / Grid</div>
-            </div>
-            <div class="skill-percent">92%</div>
-          </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="92%"></div></div>
-        </div>
-
-        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-js">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
-              <div class="skill-name">JavaScript (ES6+)</div>
-            </div>
-            <div class="skill-percent">90%</div>
-          </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="90%"></div></div>
-        </div>
-
-        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-python">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
-              <div class="skill-name">Python</div>
-            </div>
-            <div class="skill-percent">88%</div>
-          </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
-        </div>
-
-        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-java">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-java"></i></div>
-              <div class="skill-name">Java</div>
-            </div>
-            <div class="skill-percent">82%</div>
-          </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="82%"></div></div>
-        </div>
-
         <!-- Frontend -->
-        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" id="skill-responsive">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-              <div class="skill-name">Responsive Web Design</div>
+        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="150" id="skill-react">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-react">
+              <i class="fa-brands fa-react"></i>
             </div>
-            <div class="skill-percent">95%</div>
+            <span class="skill-category-badge badge-frontend">Frontend</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="95%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">React</h3>
+            <p class="skill-spec">React — Frontend Library</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="react" aria-label="View React Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
-        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" id="skill-anim">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-              <div class="skill-name">CSS Animations & FX</div>
+        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="200" id="skill-js-front">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-js">
+              <i class="fa-brands fa-js"></i>
             </div>
-            <div class="skill-percent">88%</div>
+            <span class="skill-category-badge badge-frontend">Frontend</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">JavaScript</h3>
+            <p class="skill-spec">JavaScript — ES6+, DOM & APIs</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="js" aria-label="View JavaScript Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="250" id="skill-html-css">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-html">
+              <i class="fa-brands fa-html5"></i>
+            </div>
+            <span class="skill-category-badge badge-frontend">Frontend</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">HTML5 & CSS3</h3>
+            <p class="skill-spec">HTML5 & CSS3 — Web Standards & Layouts</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="html-css" aria-label="View HTML5 & CSS3 Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="300" id="skill-tailwind">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-tailwind">
+              <i class="fa-solid fa-wind"></i>
+            </div>
+            <span class="skill-category-badge badge-frontend">Frontend</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">Tailwind CSS</h3>
+            <p class="skill-spec">Tailwind CSS — Utility-First Styling</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="tailwind" aria-label="View Tailwind CSS Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
         <!-- Backend -->
-        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" id="skill-node">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-node-js"></i></div>
-              <div class="skill-name">Node.js & Express</div>
+        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" data-aos-delay="150" id="skill-python-back">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-python">
+              <i class="fa-brands fa-python"></i>
             </div>
-            <div class="skill-percent">88%</div>
+            <span class="skill-category-badge badge-backend">Backend</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">Python</h3>
+            <p class="skill-spec">Python — Backend & Automation</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="python-back" aria-label="View Python Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
-        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" id="skill-flask">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
-              <div class="skill-name">Flask / FastAPI</div>
+        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" data-aos-delay="200" id="skill-fastapi">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-fastapi">
+              <i class="fa-solid fa-bolt"></i>
             </div>
-            <div class="skill-percent">84%</div>
+            <span class="skill-category-badge badge-backend">Backend</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="84%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">FastAPI</h3>
+            <p class="skill-spec">FastAPI — REST APIs</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="fastapi" aria-label="View FastAPI Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" data-aos-delay="250" id="skill-flask">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-flask">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <span class="skill-category-badge badge-backend">Backend</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">Flask</h3>
+            <p class="skill-spec">Flask — Web Development</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="flask" aria-label="View Flask Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" data-aos-delay="300" id="skill-node">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-node">
+              <i class="fa-brands fa-node-js"></i>
+            </div>
+            <span class="skill-category-badge badge-backend">Backend</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">Node.js & Express</h3>
+            <p class="skill-spec">Node.js — Async Server Architecture</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="node" aria-label="View Node.js Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
         <!-- Database -->
-        <div class="glass-card skill-card" data-category="database" data-aos="fade-up" id="skill-mysql">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
-              <div class="skill-name">MySQL</div>
+        <div class="glass-card skill-card" data-category="database" data-aos="fade-up" data-aos-delay="150" id="skill-firebase">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-firebase">
+              <i class="fa-solid fa-fire"></i>
             </div>
-            <div class="skill-percent">86%</div>
+            <span class="skill-category-badge badge-database">Database</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="86%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">Firebase</h3>
+            <p class="skill-spec">Firebase — Authentication & Database</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="firebase" aria-label="View Firebase Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
-        <div class="glass-card skill-card" data-category="database" data-aos="fade-up" id="skill-firebase">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-solid fa-fire"></i></div>
-              <div class="skill-name">Firebase Firestore</div>
+        <div class="glass-card skill-card" data-category="database" data-aos="fade-up" data-aos-delay="200" id="skill-mysql">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-mysql">
+              <i class="fa-solid fa-database"></i>
             </div>
-            <div class="skill-percent">88%</div>
+            <span class="skill-category-badge badge-database">Database</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">MySQL</h3>
+            <p class="skill-spec">MySQL — Relational Database</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="mysql" aria-label="View MySQL Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
-        <!-- Tools -->
-        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" id="skill-git">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
-              <div class="skill-name">Git & GitHub</div>
+        <!-- Programming Languages -->
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" data-aos-delay="150" id="skill-python-prog">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-python">
+              <i class="fa-brands fa-python"></i>
             </div>
-            <div class="skill-percent">92%</div>
+            <span class="skill-category-badge badge-programming">Programming</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="92%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">Python</h3>
+            <p class="skill-spec">Python — Data Structures & Automation</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="python-prog" aria-label="View Python Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
-        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" id="skill-postman">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-solid fa-paper-plane"></i></div>
-              <div class="skill-name">Postman & REST APIs</div>
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" data-aos-delay="200" id="skill-js-prog">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-js">
+              <i class="fa-brands fa-js"></i>
             </div>
-            <div class="skill-percent">90%</div>
+            <span class="skill-category-badge badge-programming">Programming</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="90%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">JavaScript</h3>
+            <p class="skill-spec">JavaScript — ES6+, Async & Full-Stack</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="js-prog" aria-label="View JavaScript Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
 
-        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" id="skill-figma">
-          <div class="skill-header">
-            <div class="skill-info">
-              <div class="skill-icon"><i class="fa-brands fa-figma"></i></div>
-              <div class="skill-name">Figma & UI Prototyping</div>
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" data-aos-delay="250" id="skill-java">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-java">
+              <i class="fa-brands fa-java"></i>
             </div>
-            <div class="skill-percent">80%</div>
+            <span class="skill-category-badge badge-programming">Programming</span>
           </div>
-          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="80%"></div></div>
+          <div class="skill-body">
+            <h3 class="skill-title">Java</h3>
+            <p class="skill-spec">Java — Object-Oriented Software Engineering</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="java" aria-label="View Java Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" data-aos-delay="300" id="skill-cpp">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-cpp">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <span class="skill-category-badge badge-programming">Programming</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">C / C++</h3>
+            <p class="skill-spec">C / C++ — Low-Level Systems & Logic</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="cpp" aria-label="View C/C++ Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <!-- Tools & Technologies -->
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" data-aos-delay="150" id="skill-git">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-git">
+              <i class="fa-brands fa-git-alt"></i>
+            </div>
+            <span class="skill-category-badge badge-tools">Tools</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">Git</h3>
+            <p class="skill-spec">Git — Version Control</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="git" aria-label="View Git Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" data-aos-delay="200" id="skill-github">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-github">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <span class="skill-category-badge badge-tools">Tools</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">GitHub</h3>
+            <p class="skill-spec">GitHub — Collaboration</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="github" aria-label="View GitHub Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" data-aos-delay="250" id="skill-vscode">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-vscode">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <span class="skill-category-badge badge-tools">Tools</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">VS Code</h3>
+            <p class="skill-spec">VS Code — Development Environment</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="vscode" aria-label="View VS Code Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" data-aos-delay="300" id="skill-postman">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-postman">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <span class="skill-category-badge badge-tools">Tools</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">Postman</h3>
+            <p class="skill-spec">Postman — API Testing & Specs</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="postman" aria-label="View Postman Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" data-aos-delay="350" id="skill-figma">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-figma">
+              <i class="fa-brands fa-figma"></i>
+            </div>
+            <span class="skill-category-badge badge-tools">Tools</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">Figma</h3>
+            <p class="skill-spec">Figma — UI/UX Prototyping</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="figma" aria-label="View Figma Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
+        </div>
+
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" data-aos-delay="400" id="skill-gemini">
+          <div class="skill-card-header">
+            <div class="skill-icon-box skill-icon-ai">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <span class="skill-category-badge badge-tools">Tools</span>
+          </div>
+          <div class="skill-body">
+            <h3 class="skill-title">Gemini AI</h3>
+            <p class="skill-spec">Gemini AI — LLM Models & Agents</p>
+          </div>
+          <button class="skill-credential-btn" data-credential="gemini" aria-label="View Gemini AI Credential">
+            <i class="fa-solid fa-award"></i>
+            <span>View Credential</span>
+            <i class="fa-solid fa-arrow-right arrow-icon"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -1197,6 +1415,60 @@
         <a href="data:text/plain;charset=utf-8,Sonu%20Kumar%20Resume%20Full%20Stack%20Developer" download="Sonu_Kumar_Resume.txt" class="btn-secondary" id="btn-download-resume-txt">
           <i class="fa-solid fa-download"></i> Save as Document
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill Credential Modal -->
+  <div class="modal-overlay" id="credential-modal">
+    <div class="modal-content credential-modal-content">
+      <button class="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="credential-header">
+        <div class="credential-icon-wrapper" id="cred-modal-icon-wrap">
+          <i class="fa-brands fa-react" id="cred-modal-icon"></i>
+        </div>
+        <div class="credential-header-text">
+          <div class="credential-verified-badge">
+            <i class="fa-solid fa-circle-check"></i> Verified Certification
+          </div>
+          <h3 class="credential-title" id="cred-modal-title">Meta React Developer Professional Certificate</h3>
+          <p class="credential-issuer" id="cred-modal-issuer">Issued by Meta via Coursera</p>
+        </div>
+      </div>
+
+      <div class="credential-details-grid">
+        <div class="cred-detail-card">
+          <div class="cred-detail-label"><i class="fa-solid fa-fingerprint"></i> Credential ID</div>
+          <div class="cred-detail-value" id="cred-modal-id">META-REACT-883921</div>
+        </div>
+        <div class="cred-detail-card">
+          <div class="cred-detail-label"><i class="fa-regular fa-calendar"></i> Issue Date</div>
+          <div class="cred-detail-value" id="cred-modal-date">October 2024</div>
+        </div>
+        <div class="cred-detail-card">
+          <div class="cred-detail-label"><i class="fa-solid fa-shield-halved"></i> Security Status</div>
+          <div class="cred-detail-value cred-status-active"><i class="fa-solid fa-circle-check"></i> Authenticated</div>
+        </div>
+      </div>
+
+      <div class="credential-topics-section">
+        <h4 class="credential-section-title"><i class="fa-solid fa-layer-group"></i> Verified Skills & Competencies</h4>
+        <div class="credential-tags-container" id="cred-modal-tags">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <div class="credential-description-box" id="cred-modal-desc">
+        Demonstrates advanced proficiency in component architecture, state management with hooks & Redux, asynchronous REST API integration, and modern frontend application development.
+      </div>
+
+      <div class="credential-footer">
+        <a href="https://coursera.org/verify" target="_blank" rel="noopener noreferrer" class="btn-primary" id="cred-modal-verify-btn">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Verify Official Credential</span>
+        </a>
+        <button class="btn-secondary modal-close">Close</button>
       </div>
     </div>
   </div>

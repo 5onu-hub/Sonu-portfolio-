@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient - Modern Campus & Greenery -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="40%" stop-color="#334155" />
+      <stop offset="75%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Glass Reflection Blur -->
+    <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Greenery Gradient -->
+    <radialGradient id="plantGrad1" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#15803d" stop-opacity="0.1" />
+    </radialGradient>
+
+    <radialGradient id="plantGrad2" cx="70%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.1" />
+    </radialGradient>
+
+    <!-- Skin Tone Gradients -->
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d9a07a" />
+      <stop offset="50%" stop-color="#c68a62" />
+      <stop offset="100%" stop-color="#a86e49" />
+    </linearGradient>
+
+    <linearGradient id="skinShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b87852" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#824c2c" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Suit & Shirt Gradients -->
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0a0f1d" />
+    </linearGradient>
+
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#bae6fd" />
+    </linearGradient>
+
+    <linearGradient id="tieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="50%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="lanyardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Campus Glass Windows & Foliage -->
+  <rect width="600" height="700" fill="url(#bgGrad)" />
+
+  <!-- Blurred Campus Window Structure -->
+  <g opacity="0.35">
+    <rect x="50" y="20" width="160" height="300" rx="4" fill="url(#glassReflection)" stroke="#64748b" stroke-width="1" />
+    <rect x="230" y="20" width="160" height="300" rx="4" fill="url(#glassReflection)" stroke="#64748b" stroke-width="1" />
+    <rect x="410" y="20" width="150" height="300" rx="4" fill="url(#glassReflection)" stroke="#64748b" stroke-width="1" />
+    <line x1="50" y1="120" x2="560" y2="120" stroke="#475569" stroke-width="2" />
+    <line x1="50" y1="220" x2="560" y2="220" stroke="#475569" stroke-width="2" />
+  </g>
+
+  <!-- Outdoor Green Plants (Out of focus circles) -->
+  <circle cx="80" cy="380" r="90" fill="url(#plantGrad1)" filter="blur(15px)" />
+  <circle cx="520" cy="360" r="110" fill="url(#plantGrad2)" filter="blur(18px)" />
+  <circle cx="140" cy="420" r="60" fill="url(#plantGrad1)" filter="blur(12px)" />
+
+  <!-- Outer Lighting Vignette -->
+  <rect width="600" height="700" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12" />
+
+  <!-- PORTRAIT FIGURE -->
+  <g id="figure" transform="translate(0, 20)">
+
+    <!-- Shoulders & Navy Suit Jacket -->
+    <!-- Left Shoulder/Sleeve -->
+    <path d="M 100 700 C 110 520, 180 430, 240 410 L 250 490 L 190 700 Z" fill="url(#suitGrad)" />
+    <!-- Right Shoulder/Sleeve -->
+    <path d="M 500 700 C 490 520, 420 430, 360 410 L 350 490 L 410 700 Z" fill="url(#suitGrad)" />
+
+    <!-- Main Suit Lapels & Body -->
+    <path d="M 160 440 Q 230 400 300 400 Q 370 400 440 440 L 470 700 L 130 700 Z" fill="url(#suitGrad)" />
+
+    <!-- Light Blue Dress Shirt V-Neck & Collar -->
+    <path d="M 235 340 L 300 430 L 365 340 L 380 320 L 350 310 L 300 340 L 250 310 L 220 320 Z" fill="url(#shirtGrad)" />
+    <path d="M 250 310 L 300 440 L 350 310 L 330 310 L 300 360 L 270 310 Z" fill="#93c5fd" opacity="0.6" />
+
+    <!-- Left Shirt Collar -->
+    <path d="M 230 315 L 275 365 L 290 315 Z" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1" />
+    <!-- Right Shirt Collar -->
+    <path d="M 370 315 L 325 365 L 310 315 Z" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1" />
+
+    <!-- Dark Blue Necktie -->
+    <path d="M 288 350 L 312 350 L 318 490 L 300 520 L 282 490 Z" fill="url(#tieGrad)" />
+    <!-- Tie Knot -->
+    <path d="M 285 340 L 315 340 L 310 362 L 290 362 Z" fill="#1e3a8a" />
+
+    <!-- Left Suit Lapel -->
+    <path d="M 180 430 L 255 410 L 275 510 L 220 580 L 170 480 Z" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+    <!-- Right Suit Lapel -->
+    <path d="M 420 430 L 345 410 L 325 510 L 380 580 L 430 480 Z" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+
+    <!-- Neck -->
+    <path d="M 255 280 L 345 280 L 350 345 C 320 370, 280 370, 250 345 Z" fill="url(#skinGrad)" />
+    <!-- Neck Shadow under chin -->
+    <path d="M 255 280 Q 300 315 345 280 Q 320 345 255 280 Z" fill="url(#skinShadow)" opacity="0.7" />
+
+    <!-- Head & Ears -->
+    <!-- Left Ear -->
+    <path d="M 220 200 C 205 200, 205 240, 222 245 Z" fill="url(#skinGrad)" stroke="#a86e49" stroke-width="1" />
+    <!-- Right Ear -->
+    <path d="M 380 200 C 395 200, 395 240, 378 245 Z" fill="url(#skinGrad)" stroke="#a86e49" stroke-width="1" />
+
+    <!-- Jaw & Face Shape -->
+    <path d="M 222 170 C 220 240, 240 300, 300 305 C 360 300, 380 240, 378 170 C 378 120, 222 120, 222 170 Z" fill="url(#skinGrad)" />
+
+    <!-- Cheek & Jaw Shadows -->
+    <path d="M 225 210 Q 235 270 300 298 Q 365 270 375 210 Q 360 290 300 302 Q 240 290 225 210 Z" fill="url(#skinShadow)" opacity="0.4" />
+
+    <!-- Short Dark Hair -->
+    <path d="M 215 160 C 215 110, 250 85, 300 85 C 350 85, 385 110, 385 160 C 390 140, 380 100, 350 90 C 320 80, 280 80, 250 90 C 220 100, 210 140, 215 160 Z" fill="#090d16" />
+    <path d="M 220 155 C 225 115, 255 92, 300 92 C 345 92, 375 115, 380 155 C 370 110, 340 98, 300 98 C 260 98, 230 110, 220 155 Z" fill="#1e293b" />
+
+    <!-- Eyebrows -->
+    <!-- Left Eyebrow -->
+    <path d="M 240 175 Q 260 168 280 174" stroke="#0f172a" stroke-width="5.5" stroke-linecap="round" fill="none" />
+    <!-- Right Eyebrow -->
+    <path d="M 320 174 Q 340 168 360 175" stroke="#0f172a" stroke-width="5.5" stroke-linecap="round" fill="none" />
+
+    <!-- Eyes -->
+    <!-- Left Eye -->
+    <ellipse cx="260" cy="190" rx="13" ry="8" fill="#ffffff" />
+    <circle cx="261" cy="190" r="6" fill="#1e1b18" />
+    <circle cx="263" cy="188" r="2" fill="#ffffff" />
+    <path d="M 245 186 Q 260 180 275 186" stroke="#475569" stroke-width="2" fill="none" />
+
+    <!-- Right Eye -->
+    <ellipse cx="340" cy="190" rx="13" ry="8" fill="#ffffff" />
+    <circle cx="339" cy="190" r="6" fill="#1e1b18" />
+    <circle cx="341" cy="188" r="2" fill="#ffffff" />
+    <path d="M 325 186 Q 340 180 355 186" stroke="#475569" stroke-width="2" fill="none" />
+
+    <!-- Nose -->
+    <path d="M 300 185 L 295 228 Q 300 234 305 228 Z" fill="none" stroke="#9a5a32" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 288 230 Q 300 238 312 230" fill="none" stroke="#824c2c" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Well-Groomed Beard & Mustache -->
+    <!-- Mustache -->
+    <path d="M 270 248 Q 288 244 300 249 Q 312 244 330 248 Q 312 258 300 256 Q 288 258 270 248 Z" fill="#111827" opacity="0.9" />
+
+    <!-- Lips -->
+    <path d="M 278 260 Q 300 257 322 260 Q 300 272 278 260 Z" fill="#a3624c" />
+
+    <!-- Full Beard Line around Jaw -->
+    <path d="M 220 200 Q 220 270 255 290 Q 300 308 345 290 Q 380 270 380 200 Q 370 260 340 282 Q 300 298 260 282 Q 230 260 220 200 Z" fill="#0b0f19" opacity="0.88" />
+
+    <!-- BLUE LANYARD WITH ID BADGE -->
+    <!-- Lanyard Straps hanging around neck -->
+    <path d="M 262 330 L 285 470 L 293 470 L 268 330 Z" fill="url(#lanyardGrad)" />
+    <path d="M 338 330 L 315 470 L 307 470 L 332 330 Z" fill="url(#lanyardGrad)" />
+
+    <!-- Lanyard Text ("RVIT") -->
+    <text x="270" y="390" fill="#ffffff" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(78 270 390)">RVIT</text>
+    <text x="328" y="390" fill="#ffffff" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-78 328 390)">RVIT</text>
+
+    <!-- Metal Clip -->
+    <rect x="292" y="465" width="16" height="12" rx="2" fill="#94a3b8" stroke="#475569" stroke-width="1" />
+    <circle cx="300" cy="471" r="3" fill="#334155" />
+
+    <!-- ID Card Badge -->
+    <g transform="translate(255, 477)">
+      <!-- White Plastic Card Container -->
+      <rect x="0" y="0" width="90" height="135" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#softGlow)" />
+      <!-- Top Blue Header -->
+      <rect x="0" y="0" width="90" height="28" rx="6" fill="#1e3a8a" />
+      <rect x="0" y="20" width="90" height="8" fill="#1e3a8a" />
+      <text x="45" y="14" fill="#ffffff" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="middle">R.V.I.T. COLLEGE</text>
+      <text x="45" y="22" fill="#93c5fd" font-size="6" font-family="sans-serif" text-anchor="middle">STUDENT IDENTITY CARD</text>
+
+      <!-- Mini Photo Frame on ID -->
+      <rect x="28" y="34" width="34" height="42" rx="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" />
+      <!-- Mini Silhouette -->
+      <circle cx="45" cy="48" r="9" fill="#1e293b" />
+      <path d="M 33 72 C 33 62, 57 62, 57 72 Z" fill="#0f172a" />
+
+      <!-- Details Text on Badge -->
+      <text x="45" y="86" fill="#0f172a" font-size="7.5" font-family="sans-serif" font-weight="bold" text-anchor="middle">SONU KUMAR</text>
+      <text x="45" y="96" fill="#475569" font-size="6" font-family="sans-serif" text-anchor="middle">CSE — B.TECH</text>
+      <text x="45" y="105" fill="#2563eb" font-size="6.5" font-family="monospace" font-weight="bold" text-anchor="middle">ID: 2021CSE084</text>
+
+      <!-- Barcode mockup -->
+      <line x1="12" y1="116" x2="12" y2="126" stroke="#000" stroke-width="1.5" />
+      <line x1="16" y1="116" x2="16" y2="126" stroke="#000" stroke-width="1" />
+      <line x1="19" y1="116" x2="19" y2="126" stroke="#000" stroke-width="2" />
+      <line x1="24" y1="116" x2="24" y2="126" stroke="#000" stroke-width="1" />
+      <line x1="28" y1="116" x2="28" y2="126" stroke="#000" stroke-width="1.5" />
+      <line x1="33" y1="116" x2="33" y2="126" stroke="#000" stroke-width="2.5" />
+      <line x1="38" y1="116" x2="38" y2="126" stroke="#000" stroke-width="1" />
+      <line x1="42" y1="116" x2="42" y2="126" stroke="#000" stroke-width="1.5" />
+      <line x1="47" y1="116" x2="47" y2="126" stroke="#000" stroke-width="2" />
+      <line x1="52" y1="116" x2="52" y2="126" stroke="#000" stroke-width="1" />
+      <line x1="56" y1="116" x2="56" y2="126" stroke="#000" stroke-width="2.5" />
+      <line x1="62" y1="116" x2="62" y2="126" stroke="#000" stroke-width="1" />
+      <line x1="66" y1="116" x2="66" y2="126" stroke="#000" stroke-width="1.5" />
+      <line x1="71" y1="116" x2="71" y2="126" stroke="#000" stroke-width="2" />
+      <line x1="76" y1="116" x2="76" y2="126" stroke="#000" stroke-width="1" />
+    </g>
+
+  </g>
+</svg>

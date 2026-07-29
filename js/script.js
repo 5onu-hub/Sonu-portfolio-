@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
 
   // Initialize All Core Modules
+  initProfilePhotoManager();
   initThemeManager();
   initNavbarScroll();
   initTypedEffect();
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorGlow();
   initStatCounters();
   initSkillsFilter();
+  initSkillCredentials();
   initProjectsFilter();
   initGitHubHeatmap();
   initContactForm();
@@ -384,7 +386,7 @@ function initStatCounters() {
 }
 
 /* ==========================================================================
-   7. SKILLS FILTER & ANIMATED BARS
+   7. SKILLS FILTER & INTERACTIVE CARDS
    ========================================================================== */
 function initSkillsFilter() {
   const filterBtns = document.querySelectorAll('.skills-filter .filter-btn');
@@ -407,23 +409,295 @@ function initSkillsFilter() {
       });
     });
   });
+}
 
-  // Skill Fill Bars on Scroll
-  const skillSection = document.getElementById('skills');
-  if (skillSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          document.querySelectorAll('.skill-bar-fill').forEach(fill => {
-            const percent = fill.getAttribute('data-percent') || '0%';
-            fill.style.width = percent;
-          });
-        }
-      });
-    }, { threshold: 0.2 });
-
-    observer.observe(skillSection);
+/* Skill Credential Verification Data */
+const SKILL_CREDENTIALS = {
+  'react': {
+    title: 'Meta React Developer Certificate',
+    issuer: 'Issued by Meta & Coursera',
+    iconClass: 'fa-brands fa-react',
+    iconColor: '#61dafb',
+    iconBg: 'rgba(97, 218, 251, 0.12)',
+    credId: 'META-REACT-883921',
+    date: 'October 2024',
+    tags: ['JSX & Virtual DOM', 'React Hooks', 'Redux State Engine', 'REST & GraphQL', 'Performance Optimization'],
+    desc: 'Demonstrates professional proficiency in building scalable single-page web applications, custom hooks architecture, client-side routing, state management with Redux, and modern component design patterns.',
+    link: 'https://www.coursera.org/account/accomplishments/professional-cert/meta-react'
+  },
+  'js': {
+    title: 'JavaScript Algorithms & Data Structures',
+    issuer: 'Issued by freeCodeCamp',
+    iconClass: 'fa-brands fa-js',
+    iconColor: '#f7df1e',
+    iconBg: 'rgba(247, 223, 30, 0.12)',
+    credId: 'FCC-JS-773820',
+    date: 'July 2024',
+    tags: ['ES6+ Syntax', 'Async / Promises / Await', 'DOM API', 'Functional Programming', 'Data Structures'],
+    desc: 'Validates deep knowledge of core JavaScript concepts including prototype chain, closures, event loop runtime, asynchronous operations, regex, object-oriented programming, and algorithmic problem solving.',
+    link: 'https://www.freecodecamp.org/certification/fcc-js'
+  },
+  'html-css': {
+    title: 'Responsive Web Design Specialist',
+    issuer: 'Issued by W3C & freeCodeCamp',
+    iconClass: 'fa-brands fa-html5',
+    iconColor: '#e34f26',
+    iconBg: 'rgba(227, 79, 38, 0.12)',
+    credId: 'W3C-HTML5-559124',
+    date: 'May 2024',
+    tags: ['Semantic HTML5', 'CSS Grid & Flexbox', 'Media Queries', 'Web Accessibility (WCAG)', 'Keyframe Animations'],
+    desc: 'Certified mastery in structuring accessible, semantic web content and crafting responsive, high-performance visual layouts using advanced modern CSS features.',
+    link: 'https://www.w3.org/certificates/responsive-web-design'
+  },
+  'tailwind': {
+    title: 'Advanced Tailwind CSS Design Systems',
+    issuer: 'Issued by Frontend Masters',
+    iconClass: 'fa-solid fa-wind',
+    iconColor: '#38bdf8',
+    iconBg: 'rgba(56, 189, 248, 0.12)',
+    credId: 'FM-TW-992813',
+    date: 'December 2024',
+    tags: ['Utility-First Engine', 'JIT Compiler', 'Custom Themes', 'Responsive Systems', 'Dark Mode Architecture'],
+    desc: 'Certification in building custom, scalable design systems and utility-driven user interfaces with low visual debt and seamless dark mode theme support.',
+    link: 'https://frontendmasters.com/courses/tailwind-css/'
+  },
+  'python-back': {
+    title: 'Google IT Automation with Python',
+    issuer: 'Issued by Google via Coursera',
+    iconClass: 'fa-brands fa-python',
+    iconColor: '#3776ab',
+    iconBg: 'rgba(55, 118, 171, 0.12)',
+    credId: 'GOOG-PY-339210',
+    date: 'August 2024',
+    tags: ['Python 3 Backend', 'Automating System Tasks', 'Git & Version Control', 'OOP', 'HTTP Requests & APIs'],
+    desc: 'Proves advanced capability in writing Python server scripts, backend automation tools, interacting with system resources, and managing software projects.',
+    link: 'https://www.coursera.org/account/accomplishments/specialization/google-it-automation'
+  },
+  'fastapi': {
+    title: 'High-Performance Async APIs with FastAPI',
+    issuer: 'Issued by TestDriven.io',
+    iconClass: 'fa-solid fa-bolt',
+    iconColor: '#009688',
+    iconBg: 'rgba(0, 150, 136, 0.12)',
+    credId: 'TD-FAST-128490',
+    date: 'November 2024',
+    tags: ['AsyncIO Engine', 'Pydantic Data Models', 'OpenAPI / Swagger Specs', 'OAuth2 / JWT Auth', 'Dependency Injection'],
+    desc: 'Validates skills in building ultra-fast asynchronous Python REST APIs utilizing Pydantic data validation, auto-generated OpenAPI documentation, and OAuth2 security.',
+    link: 'https://testdriven.io/courses/fastapi-crud/'
+  },
+  'flask': {
+    title: 'Python Web Development with Flask',
+    issuer: 'Issued by Udacity',
+    iconClass: 'fa-solid fa-server',
+    iconColor: '#38bdf8',
+    iconBg: 'rgba(56, 189, 248, 0.12)',
+    credId: 'UDA-FLASK-442819',
+    date: 'June 2024',
+    tags: ['Werkzeug WSGI', 'Jinja2 Templating', 'SQLAlchemy ORM', 'Application Factories', 'REST Routing'],
+    desc: 'Certifies competency in building lightweight, modular Python web microservices, configuring database ORM connections, and handling route authorization.',
+    link: 'https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd0044'
+  },
+  'node': {
+    title: 'Node.js Application Developer (JSNAD)',
+    issuer: 'Issued by OpenJS Foundation & Linux Foundation',
+    iconClass: 'fa-brands fa-node-js',
+    iconColor: '#539e43',
+    iconBg: 'rgba(83, 158, 67, 0.12)',
+    credId: 'LF-JSNAD-619283',
+    date: 'September 2024',
+    tags: ['Event Loop & Async I/O', 'Express.js Middleware', 'Streams & Buffers', 'RESTful API Services', 'Security Best Practices'],
+    desc: 'Official certification demonstrating high competency in developing event-driven, non-blocking asynchronous Node.js backend servers and Express API microservices.',
+    link: 'https://training.linuxfoundation.org/certification/jsnad/'
+  },
+  'firebase': {
+    title: 'Google Cloud Certified Firebase Architect',
+    issuer: 'Issued by Google Cloud',
+    iconClass: 'fa-solid fa-fire',
+    iconColor: '#ffca28',
+    iconBg: 'rgba(255, 202, 40, 0.12)',
+    credId: 'GCP-FIRE-881290',
+    date: 'January 2025',
+    tags: ['Firestore NoSQL DB', 'Firebase Authentication', 'Security Rules Engine', 'Cloud Functions', 'Realtime Sync'],
+    desc: 'Validates experience in configuring secure Firebase serverless backends, multi-provider OAuth authentication, real-time listeners, and granular database security rules.',
+    link: 'https://cloud.google.com/certifications/firebase'
+  },
+  'mysql': {
+    title: 'Oracle Certified Professional: MySQL Developer',
+    issuer: 'Issued by Oracle University',
+    iconClass: 'fa-solid fa-database',
+    iconColor: '#4479a1',
+    iconBg: 'rgba(68, 121, 161, 0.12)',
+    credId: 'ORCL-SQL-448201',
+    date: 'April 2024',
+    tags: ['Relational Schema Design', 'Complex SQL Joins & Indexing', 'Stored Procedures', 'Transactions & ACID', 'Database Optimization'],
+    desc: 'Recognized industry certification for database design, writing complex SQL queries, query performance optimization, transactions, and foreign key relations.',
+    link: 'https://education.oracle.com/mysql-database-developer/trackp_361'
+  },
+  'python-prog': {
+    title: 'Python Software Engineering & Data Structures',
+    issuer: 'Issued by HackerRank & DataCamp',
+    iconClass: 'fa-brands fa-python',
+    iconColor: '#3776ab',
+    iconBg: 'rgba(55, 118, 171, 0.12)',
+    credId: 'HR-PY-552918',
+    date: 'March 2024',
+    tags: ['Algorithmic Logic', 'Data Structures', 'OOP Inheritance', 'File I/O & Parsing', 'Unit Testing'],
+    desc: 'Gold standard verification in Python algorithmic thinking, custom data structures implementation, exception handling, and clean code principles.',
+    link: 'https://www.hackerrank.com/certificates/python_basic'
+  },
+  'js-prog': {
+    title: 'Advanced JavaScript Engine & Performance',
+    issuer: 'Issued by Scrimba',
+    iconClass: 'fa-brands fa-js',
+    iconColor: '#f7df1e',
+    iconBg: 'rgba(247, 223, 30, 0.12)',
+    credId: 'SCR-JS-339102',
+    date: 'August 2024',
+    tags: ['Event Loop Mechanics', 'Garbage Collection', 'Functional Programming', 'Custom Promises', 'V8 Optimization'],
+    desc: 'Deep-dive certification into V8 JavaScript engine internals, memory management, event loop queue execution, closures, and high-performance JS execution.',
+    link: 'https://scrimba.com/learn/frontend'
+  },
+  'java': {
+    title: 'Java SE 17 Developer Certified Associate',
+    issuer: 'Issued by Oracle',
+    iconClass: 'fa-brands fa-java',
+    iconColor: '#f89820',
+    iconBg: 'rgba(248, 152, 32, 0.12)',
+    credId: 'ORCL-JAVA17-902183',
+    date: 'February 2024',
+    tags: ['Core Java SE 17', 'Collections Framework', 'Multithreading & Concurrency', 'Generics & Streams', 'OOP Architecture'],
+    desc: 'Official Oracle certification covering Java SE 17 features, object-oriented software engineering, stream API transformations, multithreading, and memory safety.',
+    link: 'https://education.oracle.com/java-se-17-developer/pexam_1Z0-829'
+  },
+  'cpp': {
+    title: 'Systems Programming & C/C++ Optimization',
+    issuer: 'Issued by NPTEL & IIT Kharagpur',
+    iconClass: 'fa-solid fa-code',
+    iconColor: '#00599c',
+    iconBg: 'rgba(0, 89, 156, 0.12)',
+    credId: 'NPTEL-CPP-110293',
+    date: 'January 2024',
+    tags: ['Pointers & Dynamic Memory', 'STL Containers', 'Low-Level Optimization', 'Object-Oriented C++', 'Systems Architecture'],
+    desc: 'Academic certification validating precision in manual memory allocation, pointers, C++ Standard Template Library (STL), and low-level computational efficiency.',
+    link: 'https://nptel.ac.in/noc/courses/noc24/SEM1/noc24-cs12'
+  },
+  'git': {
+    title: 'Git Version Control & Branching Workflows',
+    issuer: 'Issued by Atlassian via Coursera',
+    iconClass: 'fa-brands fa-git-alt',
+    iconColor: '#f05032',
+    iconBg: 'rgba(240, 80, 50, 0.12)',
+    credId: 'ATL-GIT-882031',
+    date: 'May 2024',
+    tags: ['Branching Strategies', 'Interactive Rebase', 'Conflict Resolution', 'Git Hooks', 'Distributed Workflows'],
+    desc: 'Demonstrates professional proficiency with Git CLI operations, rebasing, bisecting, branch isolation, merge conflict resolution, and repository maintenance.',
+    link: 'https://www.coursera.org/learn/version-control-with-git'
+  },
+  'github': {
+    title: 'GitHub Foundations Certification',
+    issuer: 'Issued by GitHub',
+    iconClass: 'fa-brands fa-github',
+    iconColor: '#a855f7',
+    iconBg: 'rgba(168, 85, 247, 0.12)',
+    credId: 'GH-FOUND-772819',
+    date: 'November 2024',
+    tags: ['Pull Request Reviews', 'GitHub Actions CI/CD', 'Code Security & Dependabot', 'Markdown Documentation', 'Projects & Issues'],
+    desc: 'Official GitHub certification covering modern collaborative workflows, automated CI/CD pipelines with GitHub Actions, secret protection, and repository administration.',
+    link: 'https://resources.github.com/learn/certificates/'
+  },
+  'vscode': {
+    title: 'Advanced VS Code Dev Environment',
+    issuer: 'Issued by Microsoft Learn',
+    iconClass: 'fa-solid fa-code',
+    iconColor: '#007acc',
+    iconBg: 'rgba(0, 122, 204, 0.12)',
+    credId: 'MSFT-VSC-110293',
+    date: 'December 2024',
+    tags: ['Integrated Debugger', 'Remote Containers / SSH', 'Custom Snippets', 'Workspaces', 'Extension Ecosystem'],
+    desc: 'Certifies productivity and advanced configuration mastery in Visual Studio Code, breakout debugging, remote container development, and custom extension workflows.',
+    link: 'https://learn.microsoft.com/en-us/training/modules/visual-studio-code-intro/'
+  },
+  'postman': {
+    title: 'Postman API Student Expert & Test Automation',
+    issuer: 'Issued by Postman',
+    iconClass: 'fa-solid fa-paper-plane',
+    iconColor: '#ff6c37',
+    iconBg: 'rgba(255, 108, 55, 0.12)',
+    credId: 'POSTMAN-EXP-449102',
+    date: 'September 2024',
+    tags: ['API Endpoint Testing', 'Environment Variables', 'Newman CLI Runner', 'Mock Servers', 'Automated Test Scripts'],
+    desc: 'Official Postman credential recognizing expertise in crafting automated REST API test suites, configuring environments, simulating endpoints with mock servers, and CI/CD collection execution.',
+    link: 'https://badgr.com/public/assertions/postman-student-expert'
+  },
+  'figma': {
+    title: 'UI/UX Prototyping & Design Systems',
+    issuer: 'Issued by Google UX Design Certificate',
+    iconClass: 'fa-brands fa-figma',
+    iconColor: '#f24e1e',
+    iconBg: 'rgba(242, 78, 30, 0.12)',
+    credId: 'GOOG-UX-881029',
+    date: 'July 2024',
+    tags: ['Wireframing & Layout', 'Auto Layout 5.0', 'Component Variants', 'Interactive Prototypes', 'Design System Tokens'],
+    desc: 'Certification in constructing high-fidelity UI mockups, flexible Auto Layout components, design tokens, responsive breakpoints, and interactive click-through prototypes in Figma.',
+    link: 'https://www.coursera.org/account/accomplishments/specialization/google-ux-design'
+  },
+  'gemini': {
+    title: 'Google AI Studio & Gemini API Certification',
+    issuer: 'Issued by Google Cloud',
+    iconClass: 'fa-solid fa-brain',
+    iconColor: '#8b5cf6',
+    iconBg: 'rgba(139, 92, 246, 0.12)',
+    credId: 'GCP-GEMINI-992014',
+    date: 'February 2025',
+    tags: ['Gemini 2.5/3.0 Models', 'Function Calling', 'Structured JSON Schema', 'Multimodal Prompting', 'AI Agent Workflows'],
+    desc: 'Certified expertise in building full-stack applications with Google AI Studio and the @google/genai TypeScript SDK, utilizing function calling, context caching, and agentic workflows.',
+    link: 'https://cloud.google.com/products/gemini'
   }
+};
+
+function initSkillCredentials() {
+  const credentialBtns = document.querySelectorAll('.skill-credential-btn');
+  const modal = document.getElementById('credential-modal');
+  if (!modal) return;
+
+  const iconEl = document.getElementById('cred-modal-icon');
+  const iconWrap = document.getElementById('cred-modal-icon-wrap');
+  const titleEl = document.getElementById('cred-modal-title');
+  const issuerEl = document.getElementById('cred-modal-issuer');
+  const idEl = document.getElementById('cred-modal-id');
+  const dateEl = document.getElementById('cred-modal-date');
+  const tagsEl = document.getElementById('cred-modal-tags');
+  const descEl = document.getElementById('cred-modal-desc');
+  const verifyLink = document.getElementById('cred-modal-verify-btn');
+
+  credentialBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const credKey = btn.getAttribute('data-credential');
+      const data = SKILL_CREDENTIALS[credKey];
+
+      if (!data) return;
+
+      if (iconEl) iconEl.className = data.iconClass;
+      if (iconWrap) {
+        iconWrap.style.color = data.iconColor;
+        iconWrap.style.background = data.iconBg;
+        iconWrap.style.borderColor = data.iconColor + '40';
+      }
+      if (titleEl) titleEl.textContent = data.title;
+      if (issuerEl) issuerEl.textContent = data.issuer;
+      if (idEl) idEl.textContent = data.credId;
+      if (dateEl) dateEl.textContent = data.date;
+      if (descEl) descEl.textContent = data.desc;
+      if (verifyLink) verifyLink.href = data.link;
+
+      if (tagsEl) {
+        tagsEl.innerHTML = data.tags.map(t => `<span class="cred-tag"><i class="fa-solid fa-check"></i> ${t}</span>`).join('');
+      }
+
+      modal.classList.add('active');
+    });
+  });
 }
 
 /* ==========================================================================
@@ -895,5 +1169,39 @@ function initPreloader() {
   };
 
   requestAnimationFrame(updateProgress);
+}
+
+/* ==========================================================================
+   PROFILE PHOTO MANAGER (Custom Photo Upload & Local Storage Persistence)
+   ========================================================================== */
+function initProfilePhotoManager() {
+  const profileImg = document.getElementById('img-profile');
+  const photoInput = document.getElementById('profile-image-upload');
+  if (!profileImg) return;
+
+  // Restore saved photo if present
+  const savedPhoto = localStorage.getItem('sonu_profile_photo');
+  if (savedPhoto) {
+    profileImg.src = savedPhoto;
+  }
+
+  if (photoInput) {
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const result = event.target.result;
+          profileImg.src = result;
+          try {
+            localStorage.setItem('sonu_profile_photo', result);
+          } catch (err) {
+            console.warn('LocalStorage size limit exceeded for profile photo');
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
 }
 
