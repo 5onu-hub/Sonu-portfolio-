@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonu Kumar - Full Stack Developer & AI Enthusiast Portfolio</title>
+  <meta name="description" content="Official portfolio website of Sonu Kumar. Senior Full Stack Developer, Python Specialist, and AI/ML Enthusiast." />
+  <meta name="keywords" content="Sonu Kumar, Portfolio, Full Stack Developer, Python Developer, Web Developer, LifeLink, KhanaKart, AI ML" />
+  
+  <!-- Google Fonts: Poppins & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+
+  <!-- Reading Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Interactive Cursor Glow Effect -->
+  <div id="cursor-glow"></div>
+
+  <!-- Background Particles Canvas -->
+  <div id="particles-js"></div>
+
+  <!-- ==========================================================================
+     1. STICKY NAVIGATION BAR
+     ========================================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo" id="nav-logo">
+        <span class="logo-badge"><i class="fa-solid fa-code"></i></span>
+        <span>Sonu<span class="gradient-text">.dev</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active" id="link-home">Home</a></li>
+        <li><a href="#about" class="nav-link" id="link-about">About</a></li>
+        <li><a href="#skills" class="nav-link" id="link-skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" id="link-projects">Projects</a></li>
+        <li><a href="#experience" class="nav-link" id="link-experience">Experience</a></li>
+        <li><a href="#certificates" class="nav-link" id="link-certificates">Certificates</a></li>
+        <li><a href="#achievements" class="nav-link" id="link-achievements">Achievements</a></li>
+        <li><a href="#github" class="nav-link" id="link-github">GitHub</a></li>
+        <li><a href="#contact" class="nav-link" id="link-contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="btn-primary open-resume-modal" id="btn-nav-resume">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Resume</span>
+        </button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Mobile Navigation" id="btn-mobile-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+     2. HERO SECTION
+     ========================================================================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content" data-aos="fade-right">
+          <div class="hero-greeting" id="hero-greeting-badge">
+            <i class="fa-solid fa-hand-wave"></i>
+            <span>Welcome to my portfolio</span>
+          </div>
+          <h1 class="hero-title" id="hero-heading">
+            Hi, I'm <span class="gradient-text">Sonu Kumar</span>
+          </h1>
+          <div class="hero-typed-container" id="hero-typed-wrapper">
+            <span id="typed-text"></span>
+          </div>
+          <p class="hero-description" id="hero-desc">
+            Passionate Full Stack Developer and AI Enthusiast focused on building high-performance, scalable web platforms and intelligent machine learning solutions.
+          </p>
+
+          <div class="hero-cta" id="hero-cta-group">
+            <a href="#projects" class="btn-primary" id="btn-hero-projects">
+              <i class="fa-solid fa-rocket"></i>
+              <span>View Projects</span>
+            </a>
+            <button class="btn-secondary open-resume-modal" id="btn-hero-resume">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Resume</span>
+            </button>
+            <a href="#contact" class="btn-outline" id="btn-hero-contact">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Contact Me</span>
+            </a>
+          </div>
+
+          <div class="hero-socials" id="hero-socials">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub" id="social-github">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn" id="social-linkedin">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:sonukumar.dev@gmail.com" class="social-icon" aria-label="Email" id="social-email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LeetCode" id="social-leetcode">
+              <i class="fa-solid fa-code"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Right: Avatar Frame & Floating Badges -->
+        <div class="hero-image-wrapper" data-aos="fade-left">
+          <div class="floating-badge floating-badge-1" id="badge-float-1">
+            <div class="badge-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <div class="badge-text">
+              <span>Full Stack</span>
+              <strong>15+ Projects</strong>
+            </div>
+          </div>
+
+          <div class="profile-card" id="hero-profile-card">
+            <div class="profile-img-inner">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Sonu Kumar Profile" id="img-profile" />
+            </div>
+            <div class="status-badge" id="hero-status">
+              <span class="status-dot"></span>
+              <span>Available for Hire & Projects</span>
+            </div>
+          </div>
+
+          <div class="floating-badge floating-badge-2" id="badge-float-2">
+            <div class="badge-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="badge-text">
+              <span>Specialization</span>
+              <strong>AI & Machine Learning</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Stats Bar -->
+      <div class="hero-stats" id="hero-stats" data-aos="fade-up">
+        <div class="stat-item" id="stat-projects">
+          <div class="stat-number" data-target="15" data-suffix="+">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item" id="stat-tech">
+          <div class="stat-number" data-target="12" data-suffix="+">0</div>
+          <div class="stat-label">Technologies Mastered</div>
+        </div>
+        <div class="stat-item" id="stat-certs">
+          <div class="stat-number" data-target="8" data-suffix="+">0</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat-item" id="stat-repos">
+          <div class="stat-number" data-target="25" data-suffix="+">0</div>
+          <div class="stat-label">GitHub Repositories</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-down" aria-label="Scroll Down" id="btn-scroll-down">
+      <span>Scroll Down</span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ==========================================================================
+     3. ABOUT ME SECTION
+     ========================================================================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-about">About Me</div>
+        <h2 class="section-title" id="title-about">Driven By Passion & Code</h2>
+        <p class="section-subtitle" id="subtitle-about">A glimpse into my technical journey, education, and development philosophy.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text-content" data-aos="fade-right">
+          <p id="about-text-1">
+            Hello! I'm <strong>Sonu Kumar</strong>, a dedicated Full Stack Developer and AI/ML enthusiast based in India. I hold a degree in Computer Science Engineering and specialize in transforming complex business concepts into intuitive, reliable software products.
+          </p>
+          <p id="about-text-2">
+            My engineering workflow combines modern JavaScript/TypeScript frameworks, Python scripting, REST API architectures, and cloud services. I thrive on creating seamless user interfaces backed by performant backend systems and intelligent automation.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-box" id="highlight-edu">
+              <div class="highlight-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="highlight-info">
+                <h4>B.Tech CSE</h4>
+                <p>Computer Science & Engineering</p>
+              </div>
+            </div>
+
+            <div class="highlight-box" id="highlight-goal">
+              <div class="highlight-icon"><i class="fa-solid fa-bullseye"></i></div>
+              <div class="highlight-info">
+                <h4>Career Focus</h4>
+                <p>Scalable Web & GenAI Apps</p>
+              </div>
+            </div>
+
+            <div class="highlight-box" id="highlight-lang">
+              <div class="highlight-icon"><i class="fa-solid fa-language"></i></div>
+              <div class="highlight-info">
+                <h4>Languages</h4>
+                <p>English, Hindi, Java, Python</p>
+              </div>
+            </div>
+
+            <div class="highlight-box" id="highlight-location">
+              <div class="highlight-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="highlight-info">
+                <h4>Location</h4>
+                <p>India (Open to Remote)</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-primary open-resume-modal" id="btn-about-resume">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Download Full Resume</span>
+          </button>
+        </div>
+
+        <div class="about-tabs" data-aos="fade-left">
+          <div class="tab-buttons" id="about-tab-buttons">
+            <button class="tab-btn active" onclick="switchAboutTab('tab-education')" id="tab-btn-edu">Education</button>
+            <button class="tab-btn" onclick="switchAboutTab('tab-goals')" id="tab-btn-goals">Goals & Focus</button>
+            <button class="tab-btn" onclick="switchAboutTab('tab-hobbies')" id="tab-btn-hobbies">Interests</button>
+          </div>
+
+          <div class="tab-pane active" id="tab-education">
+            <div class="edu-card" id="edu-card-btech">
+              <div class="edu-header">
+                <h4>Bachelor of Technology (B.Tech) - CSE</h4>
+                <span class="edu-year">2021 - 2025</span>
+              </div>
+              <div class="edu-sub">Computer Science & Engineering</div>
+              <p class="edu-details">Relevant Coursework: Data Structures & Algorithms, Database Management Systems, Computer Networks, Operating Systems, Software Engineering, Artificial Intelligence.</p>
+            </div>
+
+            <div class="edu-card" id="edu-card-senior">
+              <div class="edu-header">
+                <h4>Senior Secondary (10+2) - PCM</h4>
+                <span class="edu-year">2019 - 2021</span>
+              </div>
+              <div class="edu-sub">Physics, Chemistry, Mathematics</div>
+              <p class="edu-details">Graduated with Distinction in Science and Mathematics foundation.</p>
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab-goals">
+            <div class="edu-card" id="goal-card-1">
+              <div class="edu-header">
+                <h4>Full Stack Engineering Excellence</h4>
+              </div>
+              <p class="edu-details">Mastering modern reactive interfaces, microservices, secure authentication systems, and cloud deployment pipelines.</p>
+            </div>
+            <div class="edu-card" id="goal-card-2">
+              <div class="edu-header">
+                <h4>AI & Machine Learning Integration</h4>
+              </div>
+              <p class="edu-details">Integrating LLMs, computer vision detection systems, and automated data workflows into production applications.</p>
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab-hobbies">
+            <div class="edu-card" id="hobby-card-1">
+              <div class="edu-header">
+                <h4>Open Source & Community</h4>
+              </div>
+              <p class="edu-details">Active participant in open-source hackathons, coding forums, and developer community build sprints.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     4. SKILLS SECTION
+     ========================================================================== -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-skills">My Skills</div>
+        <h2 class="section-title" id="title-skills">Technical Proficiency</h2>
+        <p class="section-subtitle" id="subtitle-skills">Languages, frameworks, databases, and development tools I work with.</p>
+      </div>
+
+      <div class="skills-filter" id="skills-filter">
+        <button class="filter-btn active" data-filter="all" id="filter-skill-all">All Skills</button>
+        <button class="filter-btn" data-filter="programming" id="filter-skill-prog">Programming</button>
+        <button class="filter-btn" data-filter="frontend" id="filter-skill-front">Frontend</button>
+        <button class="filter-btn" data-filter="backend" id="filter-skill-back">Backend</button>
+        <button class="filter-btn" data-filter="database" id="filter-skill-db">Database</button>
+        <button class="filter-btn" data-filter="tools" id="filter-skill-tools">Tools</button>
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
+        <!-- Programming -->
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-html">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+              <div class="skill-name">HTML5</div>
+            </div>
+            <div class="skill-percent">95%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="95%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-css">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+              <div class="skill-name">CSS3 / Flexbox / Grid</div>
+            </div>
+            <div class="skill-percent">92%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="92%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-js">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
+              <div class="skill-name">JavaScript (ES6+)</div>
+            </div>
+            <div class="skill-percent">90%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="90%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-python">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-python"></i></div>
+              <div class="skill-name">Python</div>
+            </div>
+            <div class="skill-percent">88%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="programming" data-aos="fade-up" id="skill-java">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-java"></i></div>
+              <div class="skill-name">Java</div>
+            </div>
+            <div class="skill-percent">82%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="82%"></div></div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" id="skill-responsive">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+              <div class="skill-name">Responsive Web Design</div>
+            </div>
+            <div class="skill-percent">95%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="95%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="frontend" data-aos="fade-up" id="skill-anim">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div class="skill-name">CSS Animations & FX</div>
+            </div>
+            <div class="skill-percent">88%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
+        </div>
+
+        <!-- Backend -->
+        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" id="skill-node">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-node-js"></i></div>
+              <div class="skill-name">Node.js & Express</div>
+            </div>
+            <div class="skill-percent">88%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="backend" data-aos="fade-up" id="skill-flask">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+              <div class="skill-name">Flask / FastAPI</div>
+            </div>
+            <div class="skill-percent">84%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="84%"></div></div>
+        </div>
+
+        <!-- Database -->
+        <div class="glass-card skill-card" data-category="database" data-aos="fade-up" id="skill-mysql">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+              <div class="skill-name">MySQL</div>
+            </div>
+            <div class="skill-percent">86%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="86%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="database" data-aos="fade-up" id="skill-firebase">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-solid fa-fire"></i></div>
+              <div class="skill-name">Firebase Firestore</div>
+            </div>
+            <div class="skill-percent">88%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="88%"></div></div>
+        </div>
+
+        <!-- Tools -->
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" id="skill-git">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-git-alt"></i></div>
+              <div class="skill-name">Git & GitHub</div>
+            </div>
+            <div class="skill-percent">92%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="92%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" id="skill-postman">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-solid fa-paper-plane"></i></div>
+              <div class="skill-name">Postman & REST APIs</div>
+            </div>
+            <div class="skill-percent">90%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="90%"></div></div>
+        </div>
+
+        <div class="glass-card skill-card" data-category="tools" data-aos="fade-up" id="skill-figma">
+          <div class="skill-header">
+            <div class="skill-info">
+              <div class="skill-icon"><i class="fa-brands fa-figma"></i></div>
+              <div class="skill-name">Figma & UI Prototyping</div>
+            </div>
+            <div class="skill-percent">80%</div>
+          </div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-percent="80%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     5. PROJECTS SECTION
+     ========================================================================== -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-projects">Portfolio</div>
+        <h2 class="section-title" id="title-projects">Featured Projects</h2>
+        <p class="section-subtitle" id="subtitle-projects">Real-world applications built with modern web and AI technologies.</p>
+      </div>
+
+      <div class="projects-filter skills-filter" id="projects-filter">
+        <button class="filter-btn active" data-project-filter="all" id="filter-proj-all">All Projects</button>
+        <button class="filter-btn" data-project-filter="fullstack" id="filter-proj-fs">Full Stack</button>
+        <button class="filter-btn" data-project-filter="ai" id="filter-proj-ai">AI & ML</button>
+        <button class="filter-btn" data-project-filter="automation" id="filter-proj-auto">Automation</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Project 1: LifeLink -->
+        <div class="glass-card project-card" data-category="fullstack" data-aos="fade-up" id="project-lifelink">
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=800&q=80" alt="LifeLink Blood Donation Platform" />
+            <div class="project-overlay">
+              <a href="https://github.com" target="_blank" class="btn-primary" aria-label="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              <button class="btn-secondary open-project-modal" data-project="lifelink"><i class="fa-solid fa-arrow-up-right-from-square"></i> Details</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">LifeLink</h3>
+            <p class="project-desc">Emergency Blood Donation & Geolocation Platform connecting blood donors with hospitals and critical care patients in real-time.</p>
+            
+            <ul class="project-features-list">
+              <li><i class="fa-solid fa-check"></i> Google OAuth & Firebase Authentication</li>
+              <li><i class="fa-solid fa-check"></i> Geolocation Nearby Donors Locator</li>
+              <li><i class="fa-solid fa-check"></i> Real-time SMS & Push Alerts</li>
+            </ul>
+
+            <div class="project-tech">
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Google Maps API</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-btn"><i class="fa-brands fa-github"></i> Source Code</a>
+              <button class="project-btn open-project-modal" data-project="lifelink"><i class="fa-solid fa-circle-info"></i> View Live Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: KhanaKart -->
+        <div class="glass-card project-card" data-category="fullstack" data-aos="fade-up" id="project-khanakart">
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=800&q=80" alt="KhanaKart Food Ordering" />
+            <div class="project-overlay">
+              <a href="https://github.com" target="_blank" class="btn-primary" aria-label="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              <button class="btn-secondary open-project-modal" data-project="khanakart"><i class="fa-solid fa-arrow-up-right-from-square"></i> Details</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">KhanaKart</h3>
+            <p class="project-desc">Full-featured Food Delivery Application featuring restaurant search, Cloudinary dish image management, JWT security, and interactive order tracking.</p>
+            
+            <ul class="project-features-list">
+              <li><i class="fa-solid fa-check"></i> JWT Auth & Cloudinary Integration</li>
+              <li><i class="fa-solid fa-check"></i> Interactive Google Maps Routing</li>
+              <li><i class="fa-solid fa-check"></i> Real-Time Delivery Tracking</li>
+            </ul>
+
+            <div class="project-tech">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">Cloudinary</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-btn"><i class="fa-brands fa-github"></i> Source Code</a>
+              <button class="project-btn open-project-modal" data-project="khanakart"><i class="fa-solid fa-circle-info"></i> View Live Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Smart City Management System -->
+        <div class="glass-card project-card" data-category="fullstack" data-aos="fade-up" id="project-smartcity">
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80" alt="Smart City Portal" />
+            <div class="project-overlay">
+              <a href="https://github.com" target="_blank" class="btn-primary" aria-label="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              <button class="btn-secondary open-project-modal" data-project="smartcity"><i class="fa-solid fa-arrow-up-right-from-square"></i> Details</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Smart City Management System</h3>
+            <p class="project-desc">Civic governance portal integrating public grievance redressal, water supply management, waste disposal schedules, and RTI tracking.</p>
+            
+            <ul class="project-features-list">
+              <li><i class="fa-solid fa-check"></i> Civic Complaint Ticketing Portal</li>
+              <li><i class="fa-solid fa-check"></i> Water & Waste Schedule Monitoring</li>
+              <li><i class="fa-solid fa-check"></i> Admin Analytics Dashboard</li>
+            </ul>
+
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">Firebase</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-btn"><i class="fa-brands fa-github"></i> Source Code</a>
+              <button class="project-btn open-project-modal" data-project="smartcity"><i class="fa-solid fa-circle-info"></i> View Live Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Animal Detection AI -->
+        <div class="glass-card project-card" data-category="ai" data-aos="fade-up" id="project-animalai">
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" alt="Animal Detection AI" />
+            <div class="project-overlay">
+              <a href="https://github.com" target="_blank" class="btn-primary" aria-label="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              <button class="btn-secondary open-project-modal" data-project="animalai"><i class="fa-solid fa-arrow-up-right-from-square"></i> Details</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Animal Detection AI</h3>
+            <p class="project-desc">Computer vision model built using Python & Machine Learning algorithms to identify, classify, and track wildlife in real-time camera streams.</p>
+            
+            <ul class="project-features-list">
+              <li><i class="fa-solid fa-check"></i> OpenCV Image Processing & Detection</li>
+              <li><i class="fa-solid fa-check"></i> Multi-species Classification</li>
+              <li><i class="fa-solid fa-check"></i> Automated Intrusion Alerts</li>
+            </ul>
+
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Machine Learning</span>
+              <span class="tech-tag">Scikit-Learn</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-btn"><i class="fa-brands fa-github"></i> Source Code</a>
+              <button class="project-btn open-project-modal" data-project="animalai"><i class="fa-solid fa-circle-info"></i> View Live Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: File Organizer Automation -->
+        <div class="glass-card project-card" data-category="automation" data-aos="fade-up" id="project-fileorganizer">
+          <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="File Organizer Script" />
+            <div class="project-overlay">
+              <a href="https://github.com" target="_blank" class="btn-primary" aria-label="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              <button class="btn-secondary open-project-modal" data-project="fileorganizer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Details</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">File Organizer Automation</h3>
+            <p class="project-desc">Automated Python utility script utilizing the OS module to scan, categorize, clean up duplicate files, and organize system folders on schedule.</p>
+            
+            <ul class="project-features-list">
+              <li><i class="fa-solid fa-check"></i> Extension-based Auto Directory Sorting</li>
+              <li><i class="fa-solid fa-check"></i> Hash-based Duplicate File Detector</li>
+              <li><i class="fa-solid fa-check"></i> Background Scheduler Execution</li>
+            </ul>
+
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OS Module</span>
+              <span class="tech-tag">Watchdog</span>
+              <span class="tech-tag">Automation</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" class="project-btn"><i class="fa-brands fa-github"></i> Source Code</a>
+              <button class="project-btn open-project-modal" data-project="fileorganizer"><i class="fa-solid fa-circle-info"></i> View Live Demo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     6. EXPERIENCE SECTION
+     ========================================================================== -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-experience">Career Journey</div>
+        <h2 class="section-title" id="title-experience">Experience & Milestones</h2>
+        <p class="section-subtitle" id="subtitle-experience">My practical training, internships, hackathons, and open source work.</p>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline-item" data-aos="fade-right" id="exp-item-1">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-content">
+            <span class="timeline-date">2024 - Present</span>
+            <h3 class="timeline-title">Software Developer Intern</h3>
+            <div class="timeline-company">Tech Innovators Lab</div>
+            <p class="timeline-desc">Assisting in building full-stack web modules, designing RESTful API services, optimizing database query performance, and implementing responsive UI screens.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left" id="exp-item-2">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-content">
+            <span class="timeline-date">2023 - 2024</span>
+            <h3 class="timeline-title">AI & Python Project Trainee</h3>
+            <div class="timeline-company">Advanced Computing Program</div>
+            <p class="timeline-desc">Developed computer vision detection scripts using OpenCV and PyTorch. Built automated data pipelines and integrated machine learning classifiers into web APIs.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right" id="exp-item-3">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-content">
+            <span class="timeline-date">2023</span>
+            <h3 class="timeline-title">National Hackathon Finalist</h3>
+            <div class="timeline-company">Smart India Innovation Hackathon</div>
+            <p class="timeline-desc">Led a 4-member engineering team to design and pitch the "Smart City Management Portal" prototype addressing urban civic and waste management challenges.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left" id="exp-item-4">
+          <div class="timeline-dot"></div>
+          <div class="glass-card timeline-content">
+            <span class="timeline-date">2022 - Present</span>
+            <h3 class="timeline-title">Open Source Contributor</h3>
+            <div class="timeline-company">GitHub & Developer Communities</div>
+            <p class="timeline-desc">Regularly contributing code fixes, documentation, and feature modules to web automation utilities and open-source frontend toolkits.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     7. CERTIFICATES SECTION
+     ========================================================================== -->
+  <section class="section" id="certificates">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-certificates">Credentials</div>
+        <h2 class="section-title" id="title-certificates">Certifications & Achievements</h2>
+        <p class="section-subtitle" id="subtitle-certificates">Verified accomplishments and professional learning certifications.</p>
+      </div>
+
+      <div class="certificates-grid" id="certificates-grid">
+        <div class="glass-card cert-card" data-aos="fade-up" id="cert-fullstack">
+          <div>
+            <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
+            <h3 class="cert-title">Full Stack Web Development</h3>
+            <div class="cert-issuer">Meta / Coursera Authorized</div>
+          </div>
+          <button class="cert-btn open-resume-modal"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        </div>
+
+        <div class="glass-card cert-card" data-aos="fade-up" id="cert-pythonai">
+          <div>
+            <div class="cert-icon"><i class="fa-brands fa-python"></i></div>
+            <h3 class="cert-title">Python for Data Science & AI</h3>
+            <div class="cert-issuer">IBM Professional Certification</div>
+          </div>
+          <button class="cert-btn open-resume-modal"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        </div>
+
+        <div class="glass-card cert-card" data-aos="fade-up" id="cert-firebase">
+          <div>
+            <div class="cert-icon"><i class="fa-solid fa-cloud"></i></div>
+            <h3 class="cert-title">Google Cloud & Firebase Specialist</h3>
+            <div class="cert-issuer">Google Developers Program</div>
+          </div>
+          <button class="cert-btn open-resume-modal"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        </div>
+
+        <div class="glass-card cert-card" data-aos="fade-up" id="cert-ml">
+          <div>
+            <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3 class="cert-title">Machine Learning Specialization</h3>
+            <div class="cert-issuer">DeepLearning.AI</div>
+          </div>
+          <button class="cert-btn open-resume-modal"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        </div>
+
+        <div class="glass-card cert-card" data-aos="fade-up" id="cert-dbms">
+          <div>
+            <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
+            <h3 class="cert-title">Database Management Systems</h3>
+            <div class="cert-issuer">NPTEL / IIT Certification</div>
+          </div>
+          <button class="cert-btn open-resume-modal"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     8. ACHIEVEMENTS SECTION
+     ========================================================================== -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-achievements">Recognition</div>
+        <h2 class="section-title" id="title-achievements">Key Achievements</h2>
+        <p class="section-subtitle" id="subtitle-achievements">Honors, coding streaks, and project recognitions.</p>
+      </div>
+
+      <div class="achievements-grid" id="achievements-grid">
+        <div class="glass-card achievement-card" data-aos="fade-up" id="achieve-exhibition">
+          <div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div>
+          <h3>Project Exhibition Winner</h3>
+          <p>Awarded 1st position for constructing the LifeLink Blood Donation web platform.</p>
+        </div>
+
+        <div class="glass-card achievement-card" data-aos="fade-up" id="achieve-hackathon">
+          <div class="achievement-icon"><i class="fa-solid fa-award"></i></div>
+          <h3>Hackathon Finalist</h3>
+          <p>Top 10 Finalist among 100+ team entries in the Smart City Civic Tech Hackathon.</p>
+        </div>
+
+        <div class="glass-card achievement-card" data-aos="fade-up" id="achieve-coding">
+          <div class="achievement-icon"><i class="fa-solid fa-code"></i></div>
+          <h3>300+ Problems Solved</h3>
+          <p>Active problem solver across LeetCode, GeeksforGeeks, and HackerRank in DS & Algo.</p>
+        </div>
+
+        <div class="glass-card achievement-card" data-aos="fade-up" id="achieve-opensource">
+          <div class="achievement-icon"><i class="fa-brands fa-github"></i></div>
+          <h3>GitHub Contributor</h3>
+          <p>Maintains 25+ repositories with active open-source activity and stars.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     9. GITHUB SECTION
+     ========================================================================== -->
+  <section class="section" id="github">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-github">Open Source</div>
+        <h2 class="section-title" id="title-github">GitHub Activity</h2>
+        <p class="section-subtitle" id="subtitle-github">Explore my code repositories and contribution heatmap.</p>
+      </div>
+
+      <div class="github-card" data-aos="fade-up" id="github-card">
+        <div class="github-header">
+          <div class="github-user">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="GitHub Avatar" class="github-avatar" />
+            <div>
+              <h3>Sonu Kumar</h3>
+              <p class="text-secondary">@sonukumar-dev • Full Stack Developer</p>
+            </div>
+          </div>
+          <a href="https://github.com" target="_blank" class="btn-primary" id="btn-github-profile">
+            <i class="fa-brands fa-github"></i>
+            <span>Visit GitHub Profile</span>
+          </a>
+        </div>
+
+        <div class="github-repos-grid" id="github-repos-grid">
+          <div class="repo-card" id="repo-lifelink">
+            <div class="repo-name"><i class="fa-solid fa-book-bookmark"></i> LifeLink</div>
+            <div class="repo-desc">Blood Donation platform with real-time geolocation matching and Google login.</div>
+            <div class="repo-meta">
+              <span><i class="fa-solid fa-circle" style="color: #f1e05a;"></i> JavaScript</span>
+              <span><i class="fa-solid fa-star"></i> 18</span>
+              <span><i class="fa-solid fa-code-fork"></i> 6</span>
+            </div>
+          </div>
+
+          <div class="repo-card" id="repo-khanakart">
+            <div class="repo-name"><i class="fa-solid fa-book-bookmark"></i> KhanaKart</div>
+            <div class="repo-desc">Food ordering application with JWT auth, Google Maps API, and Cloudinary.</div>
+            <div class="repo-meta">
+              <span><i class="fa-solid fa-circle" style="color: #f1e05a;"></i> JavaScript</span>
+              <span><i class="fa-solid fa-star"></i> 14</span>
+              <span><i class="fa-solid fa-code-fork"></i> 4</span>
+            </div>
+          </div>
+
+          <div class="repo-card" id="repo-smartcity">
+            <div class="repo-name"><i class="fa-solid fa-book-bookmark"></i> SmartCity-System</div>
+            <div class="repo-desc">Civic management portal for water, waste, and RTI complaints.</div>
+            <div class="repo-meta">
+              <span><i class="fa-solid fa-circle" style="color: #3572A5;"></i> Python</span>
+              <span><i class="fa-solid fa-star"></i> 22</span>
+              <span><i class="fa-solid fa-code-fork"></i> 8</span>
+            </div>
+          </div>
+
+          <div class="repo-card" id="repo-animalai">
+            <div class="repo-name"><i class="fa-solid fa-book-bookmark"></i> Animal-Detection-AI</div>
+            <div class="repo-desc">Computer vision model detecting animals in real-time camera feeds.</div>
+            <div class="repo-meta">
+              <span><i class="fa-solid fa-circle" style="color: #3572A5;"></i> Python</span>
+              <span><i class="fa-solid fa-star"></i> 19</span>
+              <span><i class="fa-solid fa-code-fork"></i> 5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heatmap Container -->
+        <div>
+          <h4 style="margin-bottom: 1rem; font-size: 1rem;">Contributions in the last year</h4>
+          <div class="heatmap-container">
+            <div class="heatmap-grid" id="heatmap-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     10. CONTACT SECTION
+     ========================================================================== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-badge" id="badge-contact">Get In Touch</div>
+        <h2 class="section-title" id="title-contact">Let's Work Together</h2>
+        <p class="section-subtitle" id="subtitle-contact">Have a project idea or job opportunity? Send me a message!</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-list" data-aos="fade-right">
+          <div class="contact-item" id="contact-email">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <p>sonukumar.dev@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item" id="contact-phone">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-text">
+              <h4>Phone</h4>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+
+          <div class="contact-item" id="contact-location">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-text">
+              <h4>Location</h4>
+              <p>India (Available Remote Worldwide)</p>
+            </div>
+          </div>
+
+          <div class="contact-item" id="contact-linkedin">
+            <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div class="contact-text">
+              <h4>LinkedIn</h4>
+              <p>linkedin.com/in/sonukumar</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glassmorphic Contact Form -->
+        <div class="glass-card contact-form" data-aos="fade-left">
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="form-name">Your Name</label>
+              <input type="text" id="form-name" class="form-control" placeholder="John Doe" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-email">Your Email</label>
+              <input type="email" id="form-email" class="form-control" placeholder="john@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-subject">Subject</label>
+              <input type="text" id="form-subject" class="form-control" placeholder="Project Inquiry / Job Opportunity" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-message">Message</label>
+              <textarea id="form-message" class="form-control" maxlength="500" placeholder="Hello Sonu, I'd like to talk about..." required></textarea>
+              <div class="char-counter" id="char-count">0 / 500</div>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;" id="btn-submit-form">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     11. FOOTER
+     ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <span class="logo-badge"><i class="fa-solid fa-code"></i></span>
+            <span>Sonu<span class="gradient-text">.dev</span></span>
+          </a>
+          <p>Senior Full Stack Developer & AI Enthusiast building modern, scalable web applications.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links">
+            <a href="#home" class="footer-link">Home</a>
+            <a href="#about" class="footer-link">About</a>
+            <a href="#skills" class="footer-link">Skills</a>
+            <a href="#projects" class="footer-link">Projects</a>
+            <a href="#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Connect</h4>
+          <div class="footer-links">
+            <a href="https://github.com" target="_blank" class="footer-link"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com" target="_blank" class="footer-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="mailto:sonukumar.dev@gmail.com" class="footer-link"><i class="fa-solid fa-envelope"></i> Email</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© <span id="year">2026</span> Sonu Kumar. All Rights Reserved. Designed with Precision.</div>
+        <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to Top" id="btn-back-to-top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     12. MODALS
+     ========================================================================== -->
+  <!-- Success Contact Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-content" style="text-align: center;">
+      <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div style="font-size: 3.5rem; color: var(--success); margin-bottom: 1rem;">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;">Message Received!</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+        Thank you for reaching out. I have received your message and will respond to your email as soon as possible.
+      </p>
+      <button class="btn-primary modal-close" style="margin: 0 auto;">Close</button>
+    </div>
+  </div>
+
+  <!-- Resume Preview Modal -->
+  <div class="modal-overlay" id="resume-modal">
+    <div class="modal-content">
+      <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <h3 style="font-size: 1.75rem; margin-bottom: 0.25rem;">Sonu Kumar - Curriculum Vitae</h3>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Full Stack Developer & AI Enthusiast</p>
+      </div>
+
+      <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-md); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Summary</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Computer Science & Engineering graduate with expertise in JavaScript (ES6+), Node.js, Python, Flask, MySQL, and Firebase. Proven track record of developing full-stack web applications like LifeLink and KhanaKart.
+        </p>
+
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Technical Skills</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          <strong>Languages:</strong> JavaScript, Python, Java, HTML5, CSS3, SQL<br/>
+          <strong>Frameworks & Libraries:</strong> Express.js, Flask, FastAPI, REST APIs<br/>
+          <strong>Databases:</strong> MySQL, Firebase Firestore, PostgreSQL<br/>
+          <strong>Tools:</strong> Git, GitHub, VS Code, Postman, Figma, Linux
+        </p>
+
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Key Projects</h4>
+        <p style="color: var(--text-secondary);">
+          • <strong>LifeLink:</strong> Blood donation geolocation platform with Google Auth and SMS alerts.<br/>
+          • <strong>KhanaKart:</strong> Food ordering app with JWT, Cloudinary, and Google Maps live tracking.<br/>
+          • <strong>Smart City Portal:</strong> Civic management system for water, waste, and RTI ticketing.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button class="btn-primary" onclick="window.print()" id="btn-print-resume">
+          <i class="fa-solid fa-print"></i> Print Resume
+        </button>
+        <a href="data:text/plain;charset=utf-8,Sonu%20Kumar%20Resume%20Full%20Stack%20Developer" download="Sonu_Kumar_Resume.txt" class="btn-secondary" id="btn-download-resume-txt">
+          <i class="fa-solid fa-download"></i> Save as Document
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Libraries (Typed.js, Particles.js, AOS, VanillaTilt) -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="/js/script.js" defer></script>
+
+  <script>
+    // Tab switcher helper for About tab
+    function switchAboutTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      
+      const activeBtn = document.querySelector(`.tab-btn[onclick*="${tabId}"]`);
+      const activePane = document.getElementById(tabId);
+      
+      if (activeBtn) activeBtn.classList.add('active');
+      if (activePane) activePane.classList.add('active');
+    }
+
+    // Dynamic year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
