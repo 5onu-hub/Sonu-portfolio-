@@ -7,6 +7,35 @@
   <meta name="description" content="Official portfolio website of Sonu Kumar. Senior Full Stack Developer, Python Specialist, and AI/ML Enthusiast." />
   <meta name="keywords" content="Sonu Kumar, Portfolio, Full Stack Developer, Python Developer, Web Developer, LifeLink, KhanaKart, AI ML" />
   
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sonukumar.dev/" />
+  <meta property="og:title" content="Sonu Kumar - Senior Full Stack Developer & AI Specialist" />
+  <meta property="og:description" content="Senior Full Stack Developer specializing in high-performance web platforms, Python architecture, and intelligent AI/ML solutions." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sonu Kumar - Senior Full Stack Developer & AI Specialist" />
+  <meta name="twitter:description" content="Senior Full Stack Developer specializing in high-performance web platforms, Python architecture, and intelligent AI/ML solutions." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sonu Kumar",
+    "url": "https://sonukumar.dev/",
+    "jobTitle": "Senior Full Stack Developer & AI Specialist",
+    "sameAs": [
+      "https://github.com/sonukumar",
+      "https://linkedin.com/in/sonukumar"
+    ],
+    "knowsAbout": ["Full Stack Development", "Python", "JavaScript", "Node.js", "AI/ML", "React", "Cloud Architecture"]
+  }
+  </script>
+
   <!-- Google Fonts: Poppins & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,6 +52,46 @@
   <link rel="stylesheet" href="/css/responsive.css" />
 </head>
 <body>
+
+  <!-- ==========================================================================
+     0. TECH-THEMED FULLSCREEN LOADING OVERLAY
+     ========================================================================== -->
+  <div id="tech-loader" class="tech-loader" aria-label="Loading Portfolio">
+    <div class="loader-bg-grid"></div>
+    <div class="loader-ambient-glow"></div>
+    <div class="loader-particles">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+
+    <div class="loader-content">
+      <!-- Rotating Futuristic Tech Rings & Logo Initials -->
+      <div class="loader-ring-wrapper">
+        <div class="loader-ring loader-ring-outer"></div>
+        <div class="loader-ring loader-ring-middle"></div>
+        <div class="loader-ring loader-ring-inner"></div>
+        <div class="loader-logo-initials">
+          <span class="initial-s">S</span><span class="initial-k">K</span>
+        </div>
+      </div>
+
+      <!-- Dynamic Loading Status Message -->
+      <div class="loader-status">
+        <span id="loader-text" class="loader-text">Initializing...</span>
+      </div>
+
+      <!-- Animated Progress Bar & Percentage -->
+      <div class="loader-progress-container">
+        <div class="loader-progress-track">
+          <div id="loader-progress-fill" class="loader-progress-fill"></div>
+        </div>
+        <div id="loader-percentage" class="loader-percentage">0%</div>
+      </div>
+    </div>
+  </div>
 
   <!-- Reading Scroll Progress Bar -->
   <div id="scroll-progress"></div>
@@ -477,6 +546,26 @@
     </div>
   </section>
 
+  <!-- Wave Divider: Skills to Projects -->
+  <div class="wave-divider wave-divider-skills-projects" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="wave-svg">
+      <defs>
+        <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.25" />
+          <stop offset="50%" stop-color="var(--secondary)" stop-opacity="0.35" />
+          <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.2" />
+        </linearGradient>
+        <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.15" />
+          <stop offset="50%" stop-color="var(--primary)" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="var(--secondary)" stop-opacity="0.2" />
+        </linearGradient>
+      </defs>
+      <path class="wave-path wave-path-1" fill="url(#waveGrad1)" d="M0,0 C150,90 350,-40 500,40 C650,120 900,10 1200,50 L1200,120 L0,120 Z"></path>
+      <path class="wave-path wave-path-2" fill="url(#waveGrad2)" d="M0,30 C200,110 450,10 700,70 C950,130 1100,20 1200,40 L1200,120 L0,120 Z"></path>
+    </svg>
+  </div>
+
   <!-- ==========================================================================
      5. PROJECTS SECTION
      ========================================================================== -->
@@ -488,11 +577,19 @@
         <p class="section-subtitle" id="subtitle-projects">Real-world applications built with modern web and AI technologies.</p>
       </div>
 
-      <div class="projects-filter skills-filter" id="projects-filter">
-        <button class="filter-btn active" data-project-filter="all" id="filter-proj-all">All Projects</button>
-        <button class="filter-btn" data-project-filter="fullstack" id="filter-proj-fs">Full Stack</button>
-        <button class="filter-btn" data-project-filter="ai" id="filter-proj-ai">AI & ML</button>
-        <button class="filter-btn" data-project-filter="automation" id="filter-proj-auto">Automation</button>
+      <div class="projects-controls" data-aos="fade-up">
+        <div class="project-search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="project-search-input" class="project-search-input" placeholder="Search projects by tech stack, name, or keyword..." aria-label="Search projects by tech stack, name, or keyword" />
+          <button id="project-search-clear" class="search-clear-btn" aria-label="Clear search"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="projects-filter skills-filter" id="projects-filter">
+          <button class="filter-btn active" data-project-filter="all" id="filter-proj-all">All Projects</button>
+          <button class="filter-btn" data-project-filter="fullstack" id="filter-proj-fs">Full Stack</button>
+          <button class="filter-btn" data-project-filter="ai" id="filter-proj-ai">AI & ML</button>
+          <button class="filter-btn" data-project-filter="automation" id="filter-proj-auto">Automation</button>
+        </div>
       </div>
 
       <div class="projects-grid" id="projects-grid">
@@ -663,6 +760,26 @@
       </div>
     </div>
   </section>
+
+  <!-- Wave Divider: Projects to Experience -->
+  <div class="wave-divider wave-divider-projects-experience" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="wave-svg">
+      <defs>
+        <linearGradient id="waveGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--secondary)" stop-opacity="0.2" />
+          <stop offset="50%" stop-color="var(--accent)" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.2" />
+        </linearGradient>
+        <linearGradient id="waveGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.15" />
+          <stop offset="50%" stop-color="var(--secondary)" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.15" />
+        </linearGradient>
+      </defs>
+      <path class="wave-path wave-path-3" fill="url(#waveGrad3)" d="M0,40 C300,120 600,-20 900,80 C1050,130 1150,30 1200,20 L1200,120 L0,120 Z"></path>
+      <path class="wave-path wave-path-4" fill="url(#waveGrad4)" d="M0,10 C250,-10 500,90 750,30 C1000,-30 1100,80 1200,60 L1200,120 L0,120 Z"></path>
+    </svg>
+  </div>
 
   <!-- ==========================================================================
      6. EXPERIENCE SECTION

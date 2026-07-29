@@ -6,6 +6,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Tech-Themed Fullscreen Preloader First
+  initPreloader();
+
   // Initialize All Core Modules
   initThemeManager();
   initNavbarScroll();
@@ -22,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModals();
   initAOS();
   initTiltEffect();
+  initButtonRipples();
 });
 
 /* ==========================================================================
@@ -63,14 +67,25 @@ function initNavbarScroll() {
   const navLinks = document.getElementById('nav-links');
   const navLinkItems = document.querySelectorAll('.nav-link');
 
-  // Sticky Navbar background shift on scroll
+  // Sticky Navbar background shift and auto-hide on scroll down
+  let lastScrollY = window.scrollY;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > 40) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-  });
+
+    if (currentScrollY > 120 && currentScrollY > lastScrollY && (!navLinks || !navLinks.classList.contains('active'))) {
+      navbar.classList.add('nav-hidden');
+    } else {
+      navbar.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+  }, { passive: true });
 
   // Mobile Hamburger Toggle
   if (mobileToggle && navLinks) {
@@ -412,29 +427,92 @@ function initSkillsFilter() {
 }
 
 /* ==========================================================================
-   8. PROJECTS FILTER
+   8. PROJECTS FILTER & SEARCH ENGINE
    ========================================================================== */
 function initProjectsFilter() {
-  const filterBtns = document.querySelectorAll('.projects-filter .filter-btn');
+  const filterBtns = document.querySelectorAll('#projects-filter .filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
+  const searchInput = document.getElementById('project-search-input');
+  const searchClear = document.getElementById('project-search-clear');
+
+  let activeCategory = 'all';
+  let searchQuery = '';
+
+  const applyFilters = () => {
+    let visibleCount = 0;
+
+    projectCards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category');
+      const title = card.querySelector('.project-title')?.textContent.toLowerCase() || '';
+      const desc = card.querySelector('.project-desc')?.textContent.toLowerCase() || '';
+      const techTags = Array.from(card.querySelectorAll('.tech-tag')).map(t => t.textContent.toLowerCase()).join(' ');
+
+      const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
+      const matchesSearch = !searchQuery || title.includes(searchQuery) || desc.includes(searchQuery) || techTags.includes(searchQuery);
+
+      if (matchesCategory && matchesSearch) {
+        card.style.display = 'flex';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0) scale(1)';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Handle empty search results feedback card
+    const projectsGrid = document.getElementById('projects-grid');
+    let emptyMsg = document.getElementById('no-projects-found');
+    if (visibleCount === 0 && projectsGrid) {
+      if (!emptyMsg) {
+        emptyMsg = document.createElement('div');
+        emptyMsg.id = 'no-projects-found';
+        emptyMsg.className = 'glass-card';
+        emptyMsg.style.gridColumn = '1 / -1';
+        emptyMsg.style.padding = '3rem 2rem';
+        emptyMsg.style.textAlign = 'center';
+        emptyMsg.style.margin = '2rem auto';
+        emptyMsg.style.width = '100%';
+        emptyMsg.innerHTML = `<i class="fa-solid fa-folder-open" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i><h3 style="font-size: 1.25rem;">No matching projects found</h3><p style="color: var(--text-secondary); margin-top: 0.5rem;">Try adjusting your keyword or switching filter categories.</p>`;
+        projectsGrid.appendChild(emptyMsg);
+      } else {
+        emptyMsg.style.display = 'block';
+      }
+    } else if (emptyMsg) {
+      emptyMsg.style.display = 'none';
+    }
+  };
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-project-filter');
-
-      projectCards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.4s ease forwards';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      activeCategory = btn.getAttribute('data-project-filter') || 'all';
+      applyFilters();
     });
   });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      if (searchClear) {
+        searchClear.style.display = searchQuery ? 'block' : 'none';
+      }
+      applyFilters();
+    });
+  }
+
+  if (searchClear) {
+    searchClear.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        searchQuery = '';
+        searchClear.style.display = 'none';
+        applyFilters();
+        searchInput.focus();
+      }
+    });
+  }
 }
 
 /* ==========================================================================
@@ -505,16 +583,33 @@ function initContactForm() {
         return;
       }
 
-      // Show Success Modal
-      const modal = document.getElementById('success-modal');
-      if (modal) {
-        modal.classList.add('active');
-      } else {
-        showToast('Message sent successfully! Sonu will contact you soon.', 'success');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.8';
+        submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> <span>Sending...</span>`;
       }
 
-      contactForm.reset();
-      if (charCounter) charCounter.textContent = '0 / 500';
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+          submitBtn.innerHTML = originalBtnContent;
+        }
+
+        // Show Success Modal
+        const modal = document.getElementById('success-modal');
+        if (modal) {
+          modal.classList.add('active');
+        } else {
+          showToast('Message sent successfully! Sonu will contact you soon.', 'success');
+        }
+
+        contactForm.reset();
+        if (charCounter) charCounter.textContent = '0 / 500';
+      }, 800);
     });
   }
 }
@@ -676,3 +771,129 @@ function initTiltEffect() {
     });
   }
 }
+
+/* ==========================================================================
+   14. INTERACTIVE BUTTON RIPPLE EFFECT
+   ========================================================================== */
+function initButtonRipples() {
+  const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-outline, .project-btn, .filter-btn');
+  buttons.forEach(button => {
+    button.addEventListener('click', function (e) {
+      const circle = document.createElement('span');
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+
+      const rect = button.getBoundingClientRect();
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${e.clientX - rect.left - radius}px`;
+      circle.style.top = `${e.clientY - rect.top - radius}px`;
+      circle.classList.add('ripple-effect');
+
+      const existingRipple = button.querySelector('.ripple-effect');
+      if (existingRipple) {
+        existingRipple.remove();
+      }
+
+      button.appendChild(circle);
+    });
+  });
+}
+
+/* ==========================================================================
+   15. PREMIUM TECH-THEMED LOADING OVERLAY ENGINE
+   ========================================================================== */
+function initPreloader() {
+  const loader = document.getElementById('tech-loader');
+  if (!loader) return;
+
+  const hasLoadedBefore = sessionStorage.getItem('portfolio_preloaded');
+
+  if (hasLoadedBefore === 'true') {
+    loader.style.display = 'none';
+    document.body.classList.remove('is-loading');
+
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+      heroContent.classList.add('hero-revealed');
+    }
+    return;
+  }
+
+  document.body.classList.add('is-loading');
+
+  const textEl = document.getElementById('loader-text');
+  const fillEl = document.getElementById('loader-progress-fill');
+  const percentEl = document.getElementById('loader-percentage');
+
+  const statusMessages = [
+    { threshold: 0, text: 'Initializing...' },
+    { threshold: 22, text: 'Loading Portfolio...' },
+    { threshold: 45, text: 'Loading Projects...' },
+    { threshold: 68, text: 'Loading Skills...' },
+    { threshold: 88, text: 'Almost Ready...' },
+    { threshold: 100, text: 'Welcome!' }
+  ];
+
+  let currentStepIndex = -1;
+  const totalDuration = 1800; // Snappy 1.8 second loading sequence
+  const startTime = performance.now();
+
+  const updateProgress = (currentTime) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(100, Math.floor((elapsed / totalDuration) * 100));
+
+    if (fillEl) {
+      fillEl.style.width = `${progress}%`;
+    }
+    if (percentEl) {
+      percentEl.textContent = `${progress}%`;
+    }
+
+    // Determine status text
+    let newIndex = 0;
+    for (let i = statusMessages.length - 1; i >= 0; i--) {
+      if (progress >= statusMessages[i].threshold) {
+        newIndex = i;
+        break;
+      }
+    }
+
+    if (newIndex !== currentStepIndex && textEl) {
+      currentStepIndex = newIndex;
+      textEl.style.opacity = '0';
+      textEl.style.transform = 'translateY(4px)';
+
+      setTimeout(() => {
+        if (textEl) {
+          textEl.textContent = statusMessages[newIndex].text;
+          textEl.style.opacity = '1';
+          textEl.style.transform = 'translateY(0)';
+        }
+      }, 70);
+    }
+
+    if (progress < 100) {
+      requestAnimationFrame(updateProgress);
+    } else {
+      // Completed loading sequence
+      setTimeout(() => {
+        loader.classList.add('loader-done');
+        document.body.classList.remove('is-loading');
+        sessionStorage.setItem('portfolio_preloaded', 'true');
+
+        // Smooth upward reveal animation for hero
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+          heroContent.classList.add('hero-revealed');
+        }
+
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 850);
+      }, 250);
+    }
+  };
+
+  requestAnimationFrame(updateProgress);
+}
+
